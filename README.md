@@ -1,0 +1,27 @@
+# Student_System_demo
+---
+## Apps
+- [x] student
+  - admin 
+    - 学生app后台。增、删、改学生信息
+  - forms
+    - 登陆、修改密码
+  - models
+    - 学生信息模板
+  - views
+    - 登入、登出、查看分数、修改密码
+- [x] teacher
+  - admin
+  - forms
+  - models
+  - views
+- [x] score
+  - admin
+  - forms
+  - models
+  - views
+- [x] uploads
+  - admin
+  - forms
+  - models
+  - views
