@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %}{% endblock %}</title>
+      {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <!--bootstrap核心js-->
+      <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+  <div class="main-container">
+    <div class="top-container" >
+        <div class="newIndex-header container" style="background-image: url('/static/images/logo.png');background-size:40%">
+            <!--nav_menu-->
+        <ul id="nav_menu" class="nav_menu clearfix">
+            <li class="nLi no">
+                <h3>
+                    <a  href="/">首页</a>
+                </h3>
+            </li>
+            <li class="nLi">
+                <h3>
+                    <a  href="/about">关于项目</a>
+                </h3>
+            </li>
+            <li class="nLi">
+                <h3>
+                    <a  href="/contact">联系我</a>
+                </h3>
+            </li>
+            <li class="nLi login" >
+                <h3 style="min-width: 100px;">
+                    <a href="javascript:void(0);">
+                        {% if request.session.uid %}{{ request.session.username }}{% else %}登 录{% endif %}
+                    </a>
+                </h3>
+                <ul class="sub" style="overflow: hidden; display: none;">
+                  {% if request.session.uid %}
+                      <li><a href="/logout">注销</a></li>
+                      <li id="resetPassword"><a href="/change_pwd">修改密码</a></li>
+                  {% else %}
+                      <li><a id="signInNormal" href="/login">密码登录</a></li>
+                  {% endif %}
+                </ul>
+            </li>
+        </ul>
+        <!--end nav_menu -->
+        </div>
+    </div>
+    {% block content %} {% endblock %}
+    <div class="footer">
+    <div class="footer-nav">
+        <a href="/index">首页</a>|
+        <a href="https://blog.csdn.net/qq_45020818?spm=1000.2115.3001.5343">CSDN主页</a>|
+        <a href="https://github.com/pxoxq/Student_System_demo">项目 GitHub 地址</a>|
+        <a href="https://xidian.cc">西电导航</a>
+    </div>
+    <div id="j_footer" class="copy">Django练手&nbsp;&nbsp;&nbsp;&nbsp;
+        <br/>哟！写Bug呢
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+        $(".login").mouseover(function(){
+                $(".sub").show();
+            }).mouseout(function(){
+                $(".sub").hide();
+            })
+        })
+</script>
+  </body>
+</html>
