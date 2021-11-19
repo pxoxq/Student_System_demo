@@ -61,7 +61,7 @@ class StudentAdmin(admin.ModelAdmin):
         '''
         for obj in queryset:
             obj.user.delete()
-        super().delete_model(request, obj)
+            super().delete_model(request, obj)
         return
 
     def delete_model(self, request, obj):
